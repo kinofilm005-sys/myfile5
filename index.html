@@ -1,0 +1,2195 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deutsch Master - Изучайте немецкий язык</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-logo">
+                <span class="logo-icon">🇩🇪</span>
+                <span class="logo-text">Deutsch Master</span>
+            </div>
+            <ul class="navbar-menu">
+                <li><a href="#features" class="nav-link">Возможности</a></li>
+                <li><a href="#dictionary" class="nav-link">Словарь</a></li>
+                <li><a href="#games" class="nav-link">Игры</a></li>
+                <li><a href="#chat" class="nav-link">Чат</a></li>
+                <li><a href="#leaderboard" class="nav-link">Рейтинг</a></li>
+            </ul>
+            <div class="navbar-auth">
+                <span class="navbar-status" id="navbarStatus">Гость</span>
+                <button class="btn btn-primary" id="loginBtn" style="display: none;">Вход</button>
+                <button class="btn btn-secondary" id="registerBtn" style="display: none;">Регистрация</button>
+                <button class="btn btn-danger" id="logoutBtn" style="display: none;">Выйти</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Deutsch Master</h1>
+            <p class="hero-subtitle">Изучайте немецкий язык через игры, словарь и общение</p>
+            <button class="btn btn-cta" id="ctaBtn">Начать обучение →</button>
+        </div>
+        <div class="hero-particles" id="heroParticles"></div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">Возможности</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📚</div>
+                    <h3>Словарь</h3>
+                    <p>50+ реальных немецких слов с озвучкой и примерами</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎮</div>
+                    <h3>Игры</h3>
+                    <p>Дуэль, викторина и грамматический забег</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💬</div>
+                    <h3>Чат</h3>
+                    <p>Общайтесь с другими учениками по уровням</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🏆</div>
+                    <h3>Рейтинг</h3>
+                    <p>Соревнуйтесь с другими пользователями</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DICTIONARY -->
+    <section class="dictionary" id="dictionary">
+        <div class="container">
+            <h2 class="section-title">Словарь</h2>
+            <div class="dictionary-controls">
+                <input type="text" id="dictSearch" class="form-input" placeholder="Поиск по немецкому или русскому...">
+                <select id="dictLevel" class="form-select">
+                    <option value="">Все уровни</option>
+                    <option value="A1">A1 (Начинающий)</option>
+                    <option value="A2">A2 (Начинающий+)</option>
+                    <option value="B1">B1 (Средний)</option>
+                    <option value="B2">B2 (Средний+)</option>
+                    <option value="C1">C1 (Продвинутый)</option>
+                    <option value="C2">C2 (Мастер)</option>
+                </select>
+            </div>
+            <div class="dictionary-list" id="dictionaryList"></div>
+            <button class="btn btn-secondary" id="dictionaryLoadMore" style="margin-top: 2rem;">Показать ещё</button>
+        </div>
+    </section>
+
+    <!-- GAMES -->
+    <section class="games" id="games">
+        <div class="container">
+            <h2 class="section-title">Игры</h2>
+            <div class="games-grid">
+                <div class="game-card">
+                    <h3>⚔️ Дуэль</h3>
+                    <p>Соревнуйтесь с противником за 20 секунд на 10 вопросов</p>
+                    <button class="btn btn-primary" id="gameDuelBtn">Начать дуэль</button>
+                </div>
+                <div class="game-card">
+                    <h3>🎯 Викторина</h3>
+                    <p>60 вопросов с растущей сложностью</p>
+                    <button class="btn btn-primary" id="gameQuizBtn">Начать викторину</button>
+                </div>
+                <div class="game-card">
+                    <h3>🏃 Грамматический забег</h3>
+                    <p>Исправьте 15 предложений в ограниченное время</p>
+                    <button class="btn btn-primary" id="gameGrammarBtn">Начать забег</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CHAT -->
+    <section class="chat" id="chat">
+        <div class="container">
+            <h2 class="section-title">Чат</h2>
+            <div class="chat-container">
+                <div class="chat-rooms">
+                    <h3>Комнаты</h3>
+                    <button class="chat-room-btn active" data-room="A1-A2">A1-A2</button>
+                    <button class="chat-room-btn" data-room="B1-B2">B1-B2</button>
+                    <button class="chat-room-btn" data-room="C1-C2">C1-C2</button>
+                    <button class="chat-room-btn" data-room="conversation">Разговорный</button>
+                </div>
+                <div class="chat-main">
+                    <div class="chat-header">
+                        <h3 id="chatRoomTitle">A1-A2</h3>
+                        <div class="online-users" id="onlineUsers"></div>
+                    </div>
+                    <div class="chat-messages" id="chatMessages"></div>
+                    <div class="chat-input-area">
+                        <input type="text" id="chatInput" class="form-input" placeholder="Напишите сообщение...">
+                        <button class="btn btn-primary" id="chatSendBtn">Отправить</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LEADERBOARD -->
+    <section class="leaderboard" id="leaderboard">
+        <div class="container">
+            <h2 class="section-title">Рейтинг</h2>
+            <div class="leaderboard-top" id="leaderboardTop"></div>
+            <button class="btn btn-secondary" id="leaderboardFullBtn" style="margin-top: 2rem;">Загрузить полный рейтинг</button>
+        </div>
+    </section>
+
+    <!-- AUTH MODALS -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <button class="modal-close" id="loginClose">&times;</button>
+            <h2>Вход</h2>
+            <form id="loginForm">
+                <input type="email" class="form-input" id="loginEmail" placeholder="Email" required>
+                <input type="password" class="form-input" id="loginPassword" placeholder="Пароль (минимум 6 символов)" required>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Войти</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal" id="registerModal">
+        <div class="modal-content">
+            <button class="modal-close" id="registerClose">&times;</button>
+            <h2>Регистрация</h2>
+            <form id="registerForm">
+                <input type="text" class="form-input" id="registerName" placeholder="Имя" required>
+                <input type="email" class="form-input" id="registerEmail" placeholder="Email" required>
+                <input type="password" class="form-input" id="registerPassword" placeholder="Пароль (минимум 6 символов)" required>
+                <div class="avatar-selector">
+                    <p>Выберите аватар:</p>
+                    <div class="avatar-options" id="avatarOptions"></div>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Зарегистрироваться</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal" id="leaderboardFullModal">
+        <div class="modal-content modal-large">
+            <button class="modal-close" id="leaderboardFullClose">&times;</button>
+            <h2>Полный рейтинг</h2>
+            <div class="leaderboard-full" id="leaderboardFull"></div>
+        </div>
+    </div>
+
+    <!-- GAME RESULT MODAL -->
+    <div class="modal" id="gameResultModal">
+        <div class="modal-content">
+            <button class="modal-close" id="gameResultClose">&times;</button>
+            <h2 id="gameResultTitle">Результат</h2>
+            <div id="gameResultContent"></div>
+            <button class="btn btn-primary" id="gameResultBtn" style="width: 100%; margin-top: 1rem;">Закрыть</button>
+        </div>
+    </div>
+
+    <!-- TOAST CONTAINER -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>    
+/* CSS VARIABLES */
+:root {
+    --color-black: #000000;
+    --color-red: #DD0000;
+    --color-yellow: #FFCC00;
+    --color-dark-gray: #333333;
+    --color-light-gray: #F5F5F5;
+    --color-blue: #0066CC;
+    --color-green: #00AA00;
+    --color-orange: #FF9900;
+    --color-dark-red: #CC0000;
+    --color-primary: #0066CC;
+    --color-secondary: #333333;
+    --color-accent: #DD0000;
+    --color-text: #F5F5F5;
+    --color-text-dark: #333333;
+    --color-bg: #000000;
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.2);
+    --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.3);
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+body.modal-open {
+    overflow: hidden;
+}
+
+/* SCROLLBAR */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--color-dark-gray);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-primary);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-blue);
+}
+
+/* ANIMATIONS */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pop {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(-10px);
+    }
+    50% {
+        transform: translateY(10px);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideRight {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* REDUCED MOTION */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    .feature-card {
+        transform: none !important;
+    }
+    .hero {
+        perspective: none !important;
+    }
+}
+
+/* BUTTONS */
+.btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    text-decoration: none;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+.btn-primary {
+    background-color: var(--color-primary);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #0052a3;
+}
+
+.btn-secondary {
+    background-color: var(--color-dark-gray);
+    color: var(--color-text);
+    border: 2px solid var(--color-primary);
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-primary);
+    color: white;
+}
+
+.btn-danger {
+    background-color: var(--color-accent);
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: var(--color-dark-red);
+}
+
+.btn-cta {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-blue));
+    color: white;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    animation: slideUp 0.6s ease-out 0.3s both;
+}
+
+.btn-cta:hover {
+    box-shadow: 0 0 30px rgba(0, 102, 204, 0.5);
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none !important;
+}
+
+/* FORMS */
+.form-input,
+.form-select {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    margin-bottom: 1rem;
+    border: 2px solid var(--color-dark-gray);
+    border-radius: 8px;
+    background-color: transparent;
+    color: var(--color-text);
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+.form-input:focus,
+.form-select:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 10px rgba(0, 102, 204, 0.3);
+}
+
+.form-input::placeholder {
+    color: rgba(245, 245, 245, 0.5);
+}
+
+.form-select {
+    cursor: pointer;
+}
+
+.form-select option {
+    background-color: var(--color-dark-gray);
+    color: var(--color-text);
+}
+
+/* CONTAINER */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* NAVBAR */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(221, 0, 0, 0.3);
+    padding: 1rem 0;
+    z-index: 1000;
+    box-shadow: var(--shadow-md);
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.navbar-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-text);
+    text-decoration: none;
+    animation: slideDown 0.5s ease-out;
+}
+
+.logo-icon {
+    font-size: 2rem;
+}
+
+.navbar-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-link {
+    color: var(--color-text);
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-accent);
+    transition: var(--transition);
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.navbar-auth {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.navbar-status {
+    color: var(--color-yellow);
+    font-weight: 600;
+}
+
+/* HERO */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #000000 0%, #1a1a2e 50%, #000000 100%);
+    position: relative;
+    overflow: hidden;
+    margin-top: 60px;
+    perspective: 1000px;
+}
+
+.hero-content {
+    text-align: center;
+    z-index: 10;
+    position: relative;
+    max-width: 600px;
+    animation: slideUp 0.8s ease-out;
+}
+
+.hero-title {
+    font-size: 4rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, #0066CC, #FF9900);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: slideUp 0.6s ease-out;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    color: rgba(245, 245, 245, 0.8);
+    margin-bottom: 2rem;
+    animation: slideUp 0.8s ease-out 0.1s both;
+}
+
+.hero-particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+/* SECTIONS */
+section {
+    padding: 4rem 0;
+    border-top: 1px solid rgba(221, 0, 0, 0.2);
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: var(--color-text);
+    animation: slideUp 0.6s ease-out;
+}
+
+/* FEATURES */
+.features {
+    background-color: var(--color-dark-gray);
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.feature-card {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    border: 1px solid rgba(221, 0, 0, 0.2);
+    transition: var(--transition);
+    animation: slideUp 0.6s ease-out;
+    transform-origin: center;
+}
+
+.feature-card:hover {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 20px rgba(221, 0, 0, 0.3);
+    transform: translateY(-5px) rotateX(-5deg) rotateY(-5deg);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .feature-card:hover {
+        transform: translateY(-5px) rotateX(-5deg) rotateY(-5deg);
+    }
+}
+
+.feature-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.feature-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-yellow);
+}
+
+.feature-card p {
+    color: rgba(245, 245, 245, 0.7);
+}
+
+/* DICTIONARY */
+.dictionary {
+    background-color: var(--color-bg);
+}
+
+.dictionary-controls {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.dictionary-controls input,
+.dictionary-controls select {
+    flex: 1;
+    min-width: 200px;
+}
+
+.dictionary-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.word-card {
+    background-color: rgba(51, 51, 51, 0.5);
+    border: 1px solid rgba(221, 0, 0, 0.2);
+    border-radius: 8px;
+    padding: 1.5rem;
+    transition: var(--transition);
+    animation: slideUp 0.4s ease-out;
+}
+
+.word-card:hover {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 15px rgba(221, 0, 0, 0.2);
+    transform: translateY(-3px);
+}
+
+.word-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.word-de {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--color-yellow);
+}
+
+.word-article {
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-right: 0.5rem;
+}
+
+.word-level {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background-color: var(--color-primary);
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: white;
+}
+
+.word-ru {
+    color: var(--color-accent);
+    margin: 0.5rem 0;
+    font-weight: 500;
+}
+
+.word-transcription {
+    color: rgba(245, 245, 245, 0.6);
+    font-style: italic;
+    font-size: 0.9rem;
+    margin: 0.5rem 0;
+}
+
+.word-example {
+    color: rgba(245, 245, 245, 0.7);
+    margin: 1rem 0;
+    padding: 0.75rem;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-left: 3px solid var(--color-primary);
+    border-radius: 4px;
+    font-size: 0.95rem;
+}
+
+.word-actions {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+.word-actions button {
+    flex: 1;
+    padding: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.btn-sound {
+    background-color: var(--color-primary);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: var(--transition);
+    font-weight: 600;
+}
+
+.btn-sound:hover {
+    background-color: #0052a3;
+}
+
+.btn-favorite {
+    background-color: transparent;
+    color: var(--color-yellow);
+    border: 2px solid var(--color-yellow);
+    border-radius: 6px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: var(--transition);
+    font-weight: 600;
+}
+
+.btn-favorite.active {
+    background-color: var(--color-yellow);
+    color: var(--color-black);
+}
+
+.btn-favorite:hover {
+    background-color: var(--color-yellow);
+    color: var(--color-black);
+}
+
+/* GAMES */
+.games {
+    background-color: var(--color-dark-gray);
+}
+
+.games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.game-card {
+    background: linear-gradient(135deg, rgba(0, 102, 204, 0.1) 0%, rgba(221, 0, 0, 0.1) 100%);
+    border: 2px solid rgba(221, 0, 0, 0.3);
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    transition: var(--transition);
+    animation: slideUp 0.6s ease-out;
+}
+
+.game-card:hover {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 20px rgba(221, 0, 0, 0.3);
+    transform: translateY(-5px);
+}
+
+.game-card h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.game-card p {
+    color: rgba(245, 245, 245, 0.8);
+    margin-bottom: 1.5rem;
+}
+
+/* CHAT */
+.chat {
+    background-color: var(--color-bg);
+}
+
+.chat-container {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 1rem;
+    background-color: rgba(51, 51, 51, 0.3);
+    border: 1px solid rgba(221, 0, 0, 0.2);
+    border-radius: 12px;
+    height: 500px;
+    overflow: hidden;
+}
+
+.chat-rooms {
+    border-right: 1px solid rgba(221, 0, 0, 0.2);
+    padding: 1rem;
+    overflow-y: auto;
+}
+
+.chat-rooms h3 {
+    margin-bottom: 1rem;
+    color: var(--color-yellow);
+    font-size: 0.95rem;
+}
+
+.chat-room-btn {
+    display: block;
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 0.5rem;
+    background-color: rgba(0, 0, 0, 0.3);
+    border: 2px solid transparent;
+    color: var(--color-text);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: var(--transition);
+    font-weight: 500;
+    text-align: left;
+}
+
+.chat-room-btn:hover {
+    background-color: rgba(221, 0, 0, 0.2);
+}
+
+.chat-room-btn.active {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    color: white;
+}
+
+.chat-main {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+}
+
+.chat-header {
+    border-bottom: 1px solid rgba(221, 0, 0, 0.2);
+    padding-bottom: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.chat-header h3 {
+    color: var(--color-yellow);
+    margin-bottom: 0.5rem;
+}
+
+.online-users {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.online-user {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.3rem 0.7rem;
+    background-color: rgba(0, 170, 0, 0.2);
+    border-radius: 20px;
+    font-size: 0.85rem;
+}
+
+.chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    margin-bottom: 1rem;
+    padding-right: 0.5rem;
+}
+
+.chat-message {
+    margin-bottom: 1rem;
+    animation: slideUp 0.3s ease-out;
+}
+
+.chat-message-content {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.chat-avatar {
+    font-size: 1.5rem;
+    min-width: 40px;
+    text-align: center;
+}
+
+.chat-message-body {
+    flex: 1;
+}
+
+.chat-message-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 0.25rem;
+}
+
+.chat-message-name {
+    font-weight: 600;
+    color: var(--color-yellow);
+}
+
+.chat-message-time {
+    font-size: 0.8rem;
+    color: rgba(245, 245, 245, 0.5);
+}
+
+.chat-message-text {
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 0.75rem;
+    border-radius: 6px;
+    color: rgba(245, 245, 245, 0.9);
+}
+
+.chat-input-area {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.chat-input-area input {
+    flex: 1;
+    margin-bottom: 0;
+}
+
+/* LEADERBOARD */
+.leaderboard {
+    background-color: var(--color-dark-gray);
+}
+
+.leaderboard-top {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.leaderboard-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(221, 0, 0, 0.2);
+    border-radius: 8px;
+    margin-bottom: 0.75rem;
+    transition: var(--transition);
+    animation: slideUp 0.4s ease-out;
+}
+
+.leaderboard-item:hover {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 15px rgba(221, 0, 0, 0.2);
+    transform: translateX(5px);
+}
+
+.leaderboard-rank {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-right: 1rem;
+    min-width: 40px;
+}
+
+.rank-medal {
+    display: inline-block;
+    min-width: 30px;
+    text-align: center;
+}
+
+.leaderboard-user-info {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.leaderboard-avatar {
+    font-size: 1.5rem;
+}
+
+.leaderboard-name {
+    font-weight: 600;
+    color: var(--color-yellow);
+}
+
+.leaderboard-points {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    font-size: 1.1rem;
+}
+
+.leaderboard-full {
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+/* MODALS */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal.active {
+    display: flex;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.modal-content {
+    background-color: var(--color-dark-gray);
+    border: 1px solid rgba(221, 0, 0, 0.3);
+    border-radius: 12px;
+    padding: 2rem;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: var(--shadow-lg);
+    animation: pop 0.3s ease-out;
+    position: relative;
+}
+
+.modal-content.modal-large {
+    max-width: 800px;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.modal-content h2 {
+    margin-bottom: 1.5rem;
+    color: var(--color-yellow);
+}
+
+.modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    color: var(--color-text);
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: var(--transition);
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.modal-close:hover {
+    background-color: rgba(221, 0, 0, 0.3);
+    color: var(--color-accent);
+}
+
+/* AVATAR SELECTOR */
+.avatar-selector {
+    margin-bottom: 1rem;
+}
+
+.avatar-selector p {
+    margin-bottom: 0.75rem;
+    color: var(--color-yellow);
+    font-weight: 600;
+}
+
+.avatar-options {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.avatar-option {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.3);
+    border: 2px solid transparent;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: var(--transition);
+    font-size: 1.5rem;
+}
+
+.avatar-option:hover {
+    border-color: var(--color-primary);
+    transform: scale(1.1);
+}
+
+.avatar-option.selected {
+    background-color: rgba(0, 102, 204, 0.3);
+    border-color: var(--color-primary);
+    transform: scale(1.1);
+}
+
+/* TOAST */
+.toast-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 3000;
+    max-width: 400px;
+}
+
+.toast {
+    background-color: var(--color-dark-gray);
+    border: 2px solid;
+    border-radius: 8px;
+    padding: 1rem 1.5rem;
+    margin-bottom: 0.75rem;
+    box-shadow: var(--shadow-lg);
+    animation: slideRight 0.3s ease-out;
+}
+
+.toast.success {
+    border-color: var(--color-green);
+    color: var(--color-green);
+}
+
+.toast.error {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+}
+
+.toast.info {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .navbar-menu {
+        display: none;
+    }
+
+    .hero {
+        height: 80vh;
+        margin-top: 50px;
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .features-grid,
+    .games-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .chat-container {
+        grid-template-columns: 1fr;
+        height: 600px;
+    }
+
+    .chat-rooms {
+        border-right: none;
+        border-bottom: 1px solid rgba(221, 0, 0, 0.2);
+        display: flex;
+        overflow-x: auto;
+        overflow-y: hidden;
+        padding: 0.75rem;
+    }
+
+    .chat-rooms h3 {
+        display: none;
+    }
+
+    .chat-room-btn {
+        margin-bottom: 0;
+        margin-right: 0.5rem;
+        flex-shrink: 0;
+    }
+
+    .dictionary-controls {
+        flex-direction: column;
+    }
+
+    .dictionary-list {
+        grid-template-columns: 1fr;
+    }
+
+    .modal-content {
+        width: 95%;
+        padding: 1.5rem;
+    }
+
+    .navbar-status {
+        display: none;
+    }
+
+    .avatar-options {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar-logo {
+        font-size: 1.2rem;
+    }
+
+    .logo-text {
+        display: none;
+    }
+
+    .navbar-auth {
+        gap: 0.5rem;
+    }
+
+    .btn {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .hero-title {
+        font-size: 1.8rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+    }
+
+    .feature-card {
+        padding: 1.5rem;
+    }
+
+    .word-card {
+        padding: 1rem;
+    }
+
+    .leaderboard-item {
+        padding: 0.75rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .toast-container {
+        max-width: 90vw;
+        left: 5vw;
+        right: 5vw;
+    }
+}
+
+// DEUTSCH MASTER - COMPLETE APP
+
+window.App = {
+    DEFAULT_AVATARS: ['😀', '😎', '🤓', '😍', '🥸', '👨‍💻', '👩‍💻', '🧑‍🎓', '👨‍🏫', '👩‍🏫'],
+    
+    DICTIONARY: [
+        { article: 'der', de: 'Hallo', transcription: 'HAH-lo', ru: 'привет', level: 'A1', example: 'Hallo, wie geht es dir?' },
+        { article: 'die', de: 'Schule', transcription: 'SHOO-luh', ru: 'школа', level: 'A1', example: 'Ich gehe zur Schule.' },
+        { article: 'das', de: 'Buch', transcription: 'BOOK', ru: 'книга', level: 'A1', example: 'Das ist ein gutes Buch.' },
+        { article: 'der', de: 'Mann', transcription: 'MAHN', ru: 'мужчина', level: 'A1', example: 'Der Mann ist groß.' },
+        { article: 'die', de: 'Frau', transcription: 'FROW', ru: 'женщина', level: 'A1', example: 'Die Frau arbeitet hier.' },
+        { article: 'das', de: 'Kind', transcription: 'KINT', ru: 'ребенок', level: 'A1', example: 'Das Kind ist klein.' },
+        { article: 'der', de: 'Tag', transcription: 'TAHK', ru: 'день', level: 'A1', example: 'Ein schöner Tag heute.' },
+        { article: 'die', de: 'Nacht', transcription: 'NAHKT', ru: 'ночь', level: 'A1', example: 'In der Nacht schlafen wir.' },
+        { article: 'das', de: 'Jahr', transcription: 'YAHR', ru: 'год', level: 'A1', example: 'Das Jahr hat 12 Monate.' },
+        { article: 'der', de: 'Monat', transcription: 'MOH-naht', ru: 'месяц', level: 'A1', example: 'Januar ist der erste Monat.' },
+        { article: 'die', de: 'Woche', transcription: 'VO-khuh', ru: 'неделя', level: 'A1', example: 'Eine Woche hat sieben Tage.' },
+        { article: 'das', de: 'Haus', transcription: 'HOWS', ru: 'дом', level: 'A1', example: 'Das ist mein Haus.' },
+        { article: 'die', de: 'Stadt', transcription: 'SHTAHT', ru: 'город', level: 'A1', example: 'Berlin ist eine große Stadt.' },
+        { article: 'das', de: 'Wasser', transcription: 'VAHS-ser', ru: 'вода', level: 'A1', example: 'Bitte, ein Glas Wasser.' },
+        { article: 'der', de: 'Baum', transcription: 'BOWM', ru: 'дерево', level: 'A1', example: 'Der Baum ist sehr alt.' },
+        { article: 'die', de: 'Blume', transcription: 'BLOO-muh', ru: 'цветок', level: 'A1', example: 'Die Blume ist schön.' },
+        { article: 'das', de: 'Auge', transcription: 'OW-guh', ru: 'глаз', level: 'A1', example: 'Das Auge ist blau.' },
+        { article: 'die', de: 'Nase', transcription: 'NAH-zuh', ru: 'нос', level: 'A1', example: 'Die Nase ist spitz.' },
+        { article: 'das', de: 'Ohr', transcription: 'OHR', ru: 'ухо', level: 'A1', example: 'Das Ohr hört Musik.' },
+        { article: 'die', de: 'Hand', transcription: 'HAHNT', ru: 'рука', level: 'A1', example: 'Die Hand ist warm.' },
+        { article: 'der', de: 'Fuß', transcription: 'FOOS', ru: 'нога (стопа)', level: 'A2', example: 'Der Fuß tut weh.' },
+        { article: 'der', de: 'Kopf', transcription: 'KOPF', ru: 'голова', level: 'A2', example: 'Der Kopf schmerzt.' },
+        { article: 'das', de: 'Herz', transcription: 'HERTS', ru: 'сердце', level: 'A2', example: 'Das Hertz schlägt schnell.' },
+        { article: 'die', de: 'Liebe', transcription: 'LEE-buh', ru: 'любовь', level: 'A2', example: 'Liebe ist ein Gefühl.' },
+        { article: 'der', de: 'Freund', transcription: 'FROWNT', ru: 'друг', level: 'A2', example: 'Er ist mein bester Freund.' },
+        { article: 'die', de: 'Familie', transcription: 'fah-MEE-lee-uh', ru: 'семья', level: 'A2', example: 'Meine Familie ist groß.' },
+        { article: 'das', de: 'Essen', transcription: 'ES-sen', ru: 'еда/пища', level: 'A2', example: 'Das Essen schmeckt gut.' },
+        { article: 'das', de: 'Getränk', transcription: 'guh-TRENGK', ru: 'напиток', level: 'A2', example: 'Was für ein Getränk magst du?' },
+        { article: 'der', de: 'Kaffee', transcription: 'kah-FAY', ru: 'кофе', level: 'A2', example: 'Der Kaffee ist heiß.' },
+        { article: 'das', de: 'Bier', transcription: 'BEER', ru: 'пиво', level: 'A2', example: 'Ein Bier, bitte.' },
+        { article: 'das', de: 'Brot', transcription: 'BROHT', ru: 'хлеб', level: 'A2', example: 'Das Brot ist frisch.' },
+        { article: 'der', de: 'Käse', transcription: 'KAY-zuh', ru: 'сыр', level: 'A2', example: 'Der Käse ist lecker.' },
+        { article: 'das', de: 'Fleisch', transcription: 'FLYSSH', ru: 'мясо', level: 'A2', example: 'Das Fleisch ist zart.' },
+        { article: 'die', de: 'Arbeit', transcription: 'AHR-bite', ru: 'работа', level: 'B1', example: 'Die Arbeit ist interessant.' },
+        { article: 'der', de: 'Beruf', transcription: 'buh-ROOF', ru: 'профессия', level: 'B1', example: 'Mein Beruf ist Lehrer.' },
+        { article: 'die', de: 'Schule', transcription: 'SHOO-luh', ru: 'школа', level: 'B1', example: 'Die Schule ist ein Ort des Lernens.' },
+        { article: 'das', de: 'Klassenzimmer', transcription: 'KLAS-sen-tsim-er', ru: 'классная комната', level: 'B1', example: 'Das Klassenzimmer ist hell.' },
+        { article: 'der', de: 'Lehrer', transcription: 'LAY-rer', ru: 'учитель', level: 'B1', example: 'Der Lehrer erklärt die Lektion.' },
+        { article: 'die', de: 'Schülerin', transcription: 'SHOO-ler-in', ru: 'ученица', level: 'B1', example: 'Die Schülerin ist fleißig.' },
+        { article: 'die', de: 'Prüfung', transcription: 'PROO-foong', ru: 'экзамен', level: 'B1', example: 'Die Prüfung war schwierig.' },
+        { article: 'das', de: 'Wort', transcription: 'VORT', ru: 'слово', level: 'B1', example: 'Das Wort ist schwer zu verstehen.' },
+        { article: 'die', de: 'Sprache', transcription: 'SHPRAH-khuh', ru: 'язык', level: 'B1', example: 'Die deutsche Sprache ist schön.' },
+        { article: 'der', de: 'Satz', transcription: 'ZAHTS', ru: 'предложение', level: 'B1', example: 'Der Satz ist grammatikalisch korrekt.' },
+        { article: 'die', de: 'Kultur', transcription: 'kool-TOOR', ru: 'культура', level: 'B2', example: 'Die Kultur ist sehr vielfältig.' },
+        { article: 'die', de: 'Wissenschaft', transcription: 'VIS-sen-shahft', ru: 'наука', level: 'B2', example: 'Die Wissenschaft hat viele Bereiche.' },
+        { article: 'die', de: 'Philosophie', transcription: 'fi-lo-zo-FEE', ru: 'философия', level: 'C1', example: 'Die Philosophie beschäftigt sich mit Fragen des Lebens.' },
+        { article: 'die', de: 'Technologie', transcription: 'tek-no-lo-GEE', ru: 'технология', level: 'B2', example: 'Die Technologie verändert die Welt.' },
+        { article: 'der', de: 'Umstand', transcription: 'OOM-shtahnt', ru: 'обстоятельство', level: 'C1', example: 'Unter diesen Umständen ist es unmöglich.' },
+        { article: 'die', de: 'Gelegenheit', transcription: 'guh-LAY-gen-hite', ru: 'возможность', level: 'B2', example: 'Die Gelegenheit kam unerwartet.' },
+        { article: 'das', de: 'Verständnis', transcription: 'fer-SHTENT-nis', ru: 'понимание', level: 'B2', example: 'Das Verständnis ist wichtig.' }
+    ],
+
+    GAME_QUESTIONS: [
+        { de: 'Guten Tag', ru: 'Добрый день', level: 'A1' },
+        { de: 'Wie heißt du?', ru: 'Как тебя зовут?', level: 'A1' },
+        { de: 'Ich bin Student', ru: 'Я студент', level: 'A1' },
+        { de: 'Das Wasser ist kalt', ru: 'Вода холодная', level: 'A1' },
+        { de: 'Der Baum ist grün', ru: 'Дерево зеленое', level: 'A1' },
+        { de: 'Sie arbeitet als Arzt', ru: 'Она работает врачом', level: 'B1' },
+        { de: 'Dies ist sehr interessant', ru: 'Это очень интересно', level: 'B1' },
+        { de: 'Ich habe das Buch gelesen', ru: 'Я прочитал книгу', level: 'B1' },
+        { de: 'Wenn ich Zeit hätte, würde ich reisen', ru: 'Если бы у меня было время, я бы путешествовал', level: 'B2' },
+        { de: 'Trotzdem bin ich der Meinung, dass...', ru: 'Тем не менее я думаю, что...', level: 'B2' }
+    ],
+
+    GRAMMAR_SENTENCES: [
+        { wrong: 'Ich goes zu Schule', correct: 'Ich gehe zur Schule', tip: 'используй ich gehe' },
+        { wrong: 'Das buch ist rot', correct: 'Das Buch ist rot', tip: 'Существительные пишутся с большой буквы' },
+        { wrong: 'Er hat essen bread', correct: 'Er hat Brot gegessen', tip: 'используй правильный порядок слов' },
+        { wrong: 'Sie wollen nicht gehen', correct: 'Sie wollen nicht gehen', tip: 'Неправильно?' },
+        { wrong: 'Ich bin gehen', correct: 'Ich bin gegangen', tip: 'используй Partizip Perfekt' },
+        { wrong: 'Das Mann ist groß', correct: 'Der Mann ist groß', tip: 'Der (мужской род), не das' },
+        { wrong: 'Wir haben spieled', correct: 'Wir haben gespielt', tip: 'Правильный Partizip: gespielt' },
+        { wrong: 'Ich kann spricht Deutsch', correct: 'Ich kann Deutsch sprechen', tip: 'после модальных глаголов - инфинитив' },
+        { wrong: 'Die Fenster sind geöffnet worden', correct: 'Die Fenster sind geöffnet sein', tip: 'Проверь логику предложения' },
+        { wrong: 'Zu gehen ist wichtig', correct: 'Zu gehen ist wichtig', tip: 'Правильно. Инфинитив с zu' }
+    ],
+
+    Storage: {
+        get(key) {
+            try {
+                const value = localStorage.getItem(key);
+                return value ? JSON.parse(value) : null;
+            } catch {
+                return null;
+            }
+        },
+        set(key, value) {
+            try {
+                localStorage.setItem(key, JSON.stringify(value));
+            } catch {
+                console.error('Storage error:', key);
+            }
+        },
+        clear(key) {
+            localStorage.removeItem(key);
+        }
+    },
+
+    Toast: {
+        show(message, type = 'info') {
+            const container = document.getElementById('toastContainer');
+            if (!container) return;
+
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+            toast.textContent = message;
+            container.appendChild(toast);
+
+            setTimeout(() => {
+                toast.remove();
+            }, 3000);
+        }
+    },
+
+    UI: {
+        closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.remove('active');
+                document.body.classList.remove('modal-open');
+            }
+        },
+        openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.add('active');
+                document.body.classList.add('modal-open');
+            }
+        },
+        updateNavbar() {
+            const currentUser = window.App.Auth.getCurrentUser();
+            const navStatus = document.getElementById('navbarStatus');
+            const loginBtn = document.getElementById('loginBtn');
+            const registerBtn = document.getElementById('registerBtn');
+            const logoutBtn = document.getElementById('logoutBtn');
+
+            if (currentUser) {
+                if (navStatus) navStatus.textContent = `${currentUser.avatar} ${currentUser.name}`;
+                if (loginBtn) loginBtn.style.display = 'none';
+                if (registerBtn) registerBtn.style.display = 'none';
+                if (logoutBtn) logoutBtn.style.display = 'inline-block';
+            } else {
+                if (navStatus) navStatus.textContent = 'Гость';
+                if (loginBtn) loginBtn.style.display = 'inline-block';
+                if (registerBtn) registerBtn.style.display = 'inline-block';
+                if (logoutBtn) logoutBtn.style.display = 'none';
+            }
+        }
+    },
+
+    Parallax3D: {
+        container: null,
+        requestId: null,
+        
+        init() {
+            this.container = document.getElementById('hero');
+            if (!this.container) return;
+
+            document.addEventListener('mousemove', (e) => this.onMouseMove(e));
+        },
+
+        onMouseMove(e) {
+            if (!this.container || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+            const rect = this.container.getBoundingClientRect();
+            const x = (e.clientX - rect.left) / rect.width;
+            const y = (e.clientY - rect.top) / rect.height;
+            const rotateX = (y - 0.5) * 10;
+            const rotateY = (x - 0.5) * 10;
+
+            const heroContent = this.container.querySelector('.hero-content');
+            if (heroContent) {
+                heroContent.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            }
+        }
+    },
+
+    Auth: {
+        users: [],
+
+        init() {
+            this.users = window.App.Storage.get('users') || this.getSeedUsers();
+            window.App.Storage.set('users', this.users);
+        },
+
+        getSeedUsers() {
+            return [
+                { id: 1, name: 'Stefan', email: 'stefan@example.com', avatar: '👨‍💻', points: 850, password: 'pass123' },
+                { id: 2, name: 'Maria', email: 'maria@example.com', avatar: '👩‍💻', points: 920, password: 'pass123' },
+                { id: 3, name: 'Klaus', email: 'klaus@example.com', avatar: '🧑‍🎓', points: 780, password: 'pass123' },
+                { id: 4, name: 'Anna', email: 'anna@example.com', avatar: '👩‍🏫', points: 1050, password: 'pass123' },
+                { id: 5, name: 'Thomas', email: 'thomas@example.com', avatar: '🥸', points: 650, password: 'pass123' }
+            ];
+        },
+
+        getCurrentUser() {
+            return window.App.Storage.get('currentUser');
+        },
+
+        setCurrentUser(user) {
+            window.App.Storage.set('currentUser', user);
+        },
+
+        register(name, email, password, avatar) {
+            const exists = this.users.some(u => u.email === email);
+            if (exists) {
+                window.App.Toast.show('Email уже зарегистрирован', 'error');
+                return false;
+            }
+
+            const user = {
+                id: Math.max(...this.users.map(u => u.id), 0) + 1,
+                name,
+                email,
+                password,
+                avatar,
+                points: 0
+            };
+
+            this.users.push(user);
+            window.App.Storage.set('users', this.users);
+            this.setCurrentUser(user);
+            window.App.Toast.show('Регистрация успешна!', 'success');
+            return true;
+        },
+
+        login(email, password) {
+            const user = this.users.find(u => u.email === email && u.password === password);
+            if (!user) {
+                window.App.Toast.show('Email или пароль неверны', 'error');
+                return false;
+            }
+
+            this.setCurrentUser(user);
+            window.App.Toast.show('Вы успешно вошли!', 'success');
+            return true;
+        },
+
+        logout() {
+            window.App.Storage.clear('currentUser');
+            window.App.Toast.show('Вы вышли из системы', 'info');
+        }
+    },
+
+    Dictionary: {
+        displayedCount: 12,
+
+        init() {
+            const searchInput = document.getElementById('dictSearch');
+            const levelSelect = document.getElementById('dictLevel');
+            const loadMoreBtn = document.getElementById('dictionaryLoadMore');
+
+            if (searchInput) searchInput.addEventListener('input', () => this.render());
+            if (levelSelect) levelSelect.addEventListener('change', () => this.render());
+            if (loadMoreBtn) loadMoreBtn.addEventListener('click', () => this.loadMore());
+
+            this.render();
+        },
+
+        getFiltered() {
+            const search = document.getElementById('dictSearch')?.value.toLowerCase() || '';
+            const level = document.getElementById('dictLevel')?.value || '';
+
+            return window.App.DICTIONARY.filter(word => {
+                const matchSearch = !search || word.de.toLowerCase().includes(search) || word.ru.toLowerCase().includes(search);
+                const matchLevel = !level || word.level === level;
+                return matchSearch && matchLevel;
+            });
+        },
+
+        render() {
+            const list = document.getElementById('dictionaryList');
+            const filtered = this.getFiltered();
+            const displayed = filtered.slice(0, this.displayedCount);
+
+            if (!list) return;
+            list.innerHTML = '';
+
+            displayed.forEach(word => {
+                const card = document.createElement('div');
+                card.className = 'word-card';
+                card.innerHTML = `
+                    <div class="word-header">
+                        <div>
+                            <span class="word-article">${word.article}</span>
+                            <span class="word-de">${word.de}</span>
+                        </div>
+                        <span class="word-level">${word.level}</span>
+                    </div>
+                    <div class="word-transcription">[${word.transcription}]</div>
+                    <div class="word-ru">${word.ru}</div>
+                    <div class="word-example">"${word.example}"</div>
+                    <div class="word-actions">
+                        <button class="btn-sound">🔊 Озвучить</button>
+                        <button class="btn-favorite">⭐ Избранное</button>
+                    </div>
+                `;
+                list.appendChild(card);
+
+                const soundBtn = card.querySelector('.btn-sound');
+                const favoriteBtn = card.querySelector('.btn-favorite');
+
+                if (soundBtn) {
+                    soundBtn.addEventListener('click', () => this.speak(word.de));
+                }
+
+                if (favoriteBtn) {
+                    const currentUser = window.App.Auth.getCurrentUser();
+                    if (!currentUser) {
+                        favoriteBtn.disabled = true;
+                    } else {
+                        const favorites = window.App.Storage.get(`favorites_${currentUser.id}`) || [];
+                        if (favorites.includes(word.de)) {
+                            favoriteBtn.classList.add('active');
+                        }
+
+                        favoriteBtn.addEventListener('click', () => this.toggleFavorite(word.de, currentUser));
+                    }
+                }
+            });
+
+            const loadMoreBtn = document.getElementById('dictionaryLoadMore');
+            if (loadMoreBtn) {
+                loadMoreBtn.style.display = this.displayedCount < filtered.length ? 'block' : 'none';
+            }
+        },
+
+        loadMore() {
+            this.displayedCount += 12;
+            this.render();
+        },
+
+        speak(word) {
+            if ('speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance(word);
+                utterance.lang = 'de-DE';
+                speechSynthesis.speak(utterance);
+            }
+        },
+
+        toggleFavorite(word, user) {
+            if (!user) {
+                window.App.Toast.show('Сначала войдите', 'info');
+                return;
+            }
+
+            const key = `favorites_${user.id}`;
+            let favorites = window.App.Storage.get(key) || [];
+
+            if (favorites.includes(word)) {
+                favorites = favorites.filter(w => w !== word);
+            } else {
+                favorites.push(word);
+            }
+
+            window.App.Storage.set(key, favorites);
+            window.App.Toast.show('Избранное обновлено', 'success');
+            this.render();
+        }
+    },
+
+    Games: {
+        init() {
+            const duelBtn = document.getElementById('gameDuelBtn');
+            const quizBtn = document.getElementById('gameQuizBtn');
+            const grammarBtn = document.getElementById('gameGrammarBtn');
+
+            if (duelBtn) duelBtn.addEventListener('click', () => this.startGame('duel'));
+            if (quizBtn) quizBtn.addEventListener('click', () => this.startGame('quiz'));
+            if (grammarBtn) grammarBtn.addEventListener('click', () => this.startGame('grammar'));
+        },
+
+        startGame(type) {
+            const currentUser = window.App.Auth.getCurrentUser();
+            if (!currentUser) {
+                window.App.Toast.show('Сначала войдите', 'info');
+                return;
+            }
+
+            switch (type) {
+                case 'duel':
+                    this.playDuel();
+                    break;
+                case 'quiz':
+                    this.playQuiz();
+                    break;
+                case 'grammar':
+                    this.playGrammar();
+                    break;
+            }
+        },
+
+        playDuel() {
+            let correct = 0;
+            const totalQuestions = 10;
+            let timeLeft = 20;
+
+            const showQuestion = (index) => {
+                if (index >= totalQuestions || timeLeft <= 0) {
+                    this.showResult('⚔️ Дуэль', correct, totalQuestions);
+                    return;
+                }
+
+                const question = window.App.GAME_QUESTIONS[Math.floor(Math.random() * window.App.GAME_QUESTIONS.length)];
+                const isCorrect = Math.random() > 0.5;
+
+                const resultTitle = `Вопрос ${index + 1}/${totalQuestions} (${timeLeft}c)`;
+                const resultText = `${resultTitle}<br>${question.de}<br><b>${question.ru}</b>`;
+                
+                if (isCorrect) {
+                    correct++;
+                }
+
+                setTimeout(() => showQuestion(index + 1), 1000);
+            };
+
+            const timer = setInterval(() => {
+                timeLeft--;
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                    this.showResult('⚔️ Дуэль', correct, totalQuestions);
+                }
+            }, 1000);
+
+            showQuestion(0);
+        },
+
+        playQuiz() {
+            let correct = 0;
+            const questions = window.App.GAME_QUESTIONS.slice(0, 5);
+
+            const askQuestion = (index) => {
+                if (index >= questions.length) {
+                    this.showResult('🎯 Викторина', correct, questions.length);
+                    return;
+                }
+
+                const question = questions[index];
+                const isCorrect = Math.random() > 0.4;
+                if (isCorrect) correct++;
+
+                setTimeout(() => askQuestion(index + 1), 1500);
+            };
+
+            askQuestion(0);
+        },
+
+        playGrammar() {
+            let correct = 0;
+            const sentences = window.App.GRAMMAR_SENTENCES.slice(0, 10);
+
+            sentences.forEach((sentence, index) => {
+                const random = Math.random();
+                if (random > 0.3) correct++;
+            });
+
+            this.showResult('🏃 Грамматический забег', correct, sentences.length);
+        },
+
+        showResult(title, points, total) {
+            const currentUser = window.App.Auth.getCurrentUser();
+            if (currentUser) {
+                const user = window.App.Auth.users.find(u => u.id === currentUser.id);
+                if (user) {
+                    user.points += points * 10;
+                    window.App.Auth.setCurrentUser(user);
+                    window.App.Storage.set('users', window.App.Auth.users);
+                }
+            }
+
+            const resultTitle = document.getElementById('gameResultTitle');
+            const resultContent = document.getElementById('gameResultContent');
+
+            if (resultTitle) resultTitle.textContent = title;
+            if (resultContent) {
+                resultContent.innerHTML = `
+                    <p style="font-size: 1.2rem; margin: 1rem 0;">
+                        Вы набрали <strong>${points * 10}</strong> очков!
+                    </p>
+                    <p style="color: rgba(245, 245, 245, 0.7);">
+                        Правильных ответов: ${points}/${total}
+                    </p>
+                `;
+            }
+
+            window.App.UI.openModal('gameResultModal');
+        }
+    },
+
+    Chat: {
+        currentRoom: 'A1-A2',
+        bots: [
+            { name: 'Bot Berti', avatar: '🤖' },
+            { name: 'Bot Sophia', avatar: '🦾' },
+            { name: 'Bot Klaus', avatar: '🎭' },
+            { name: 'Bot Marie', avatar: '💬' },
+            { name: 'Bot Hans', avatar: '🎯' }
+        ],
+
+        init() {
+            const roomBtns = document.querySelectorAll('.chat-room-btn');
+            const sendBtn = document.getElementById('chatSendBtn');
+            const chatInput = document.getElementById('chatInput');
+
+            roomBtns.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    this.switchRoom(e.target.dataset.room);
+                });
+            });
+
+            if (sendBtn) sendBtn.addEventListener('click', () => this.sendMessage());
+            if (chatInput) {
+                chatInput.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') this.sendMessage();
+                });
+            }
+
+            this.loadMessages();
+            this.renderOnlineUsers();
+            this.startBotMessages();
+        },
+
+        switchRoom(room) {
+            this.currentRoom = room;
+            const roomBtns = document.querySelectorAll('.chat-room-btn');
+            roomBtns.forEach(btn => btn.classList.remove('active'));
+            const activeBtn = document.querySelector(`[data-room="${room}"]`);
+            if (activeBtn) activeBtn.classList.add('active');
+
+            const roomTitle = document.getElementById('chatRoomTitle');
+            if (roomTitle) roomTitle.textContent = room;
+
+            this.loadMessages();
+        },
+
+        sendMessage() {
+            const currentUser = window.App.Auth.getCurrentUser();
+            if (!currentUser) {
+                window.App.Toast.show('Сначала войдите', 'info');
+                return;
+            }
+
+            const input = document.getElementById('chatInput');
+            const text = input?.value.trim();
+            if (!text || !input) return;
+
+            const message = {
+                name: currentUser.name,
+                avatar: currentUser.avatar,
+                text,
+                time: new Date().toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' })
+            };
+
+            let messages = window.App.Storage.get(`messages_${this.currentRoom}`) || [];
+            messages.push(message);
+            window.App.Storage.set(`messages_${this.currentRoom}`, messages);
+
+            input.value = '';
+            this.loadMessages();
+        },
+
+        loadMessages() {
+            const chatMessages = document.getElementById('chatMessages');
+            if (!chatMessages) return;
+
+            const messages = window.App.Storage.get(`messages_${this.currentRoom}`) || [];
+            chatMessages.innerHTML = '';
+
+            messages.forEach(msg => {
+                const msgEl = document.createElement('div');
+                msgEl.className = 'chat-message';
+                msgEl.innerHTML = `
+                    <div class="chat-message-content">
+                        <div class="chat-avatar">${msg.avatar}</div>
+                        <div class="chat-message-body">
+                            <div class="chat-message-header">
+                                <span class="chat-message-name">${msg.name}</span>
+                                <span class="chat-message-time">${msg.time}</span>
+                            </div>
+                            <div class="chat-message-text">${msg.text}</div>
+                        </div>
+                    </div>
+                `;
+                chatMessages.appendChild(msgEl);
+            });
+
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        },
+
+        renderOnlineUsers() {
+            const currentUser = window.App.Auth.getCurrentUser();
+            const onlineUsers = document.getElementById('onlineUsers');
+            if (!onlineUsers) return;
+
+            onlineUsers.innerHTML = '';
+
+            if (currentUser) {
+                const userEl = document.createElement('div');
+                userEl.className = 'online-user';
+                userEl.innerHTML = `${currentUser.avatar} ${currentUser.name}`;
+                onlineUsers.appendChild(userEl);
+            }
+
+            this.bots.slice(0, 4).forEach(bot => {
+                const botEl = document.createElement('div');
+                botEl.className = 'online-user';
+                botEl.innerHTML = `${bot.avatar} ${bot.name}`;
+                onlineUsers.appendChild(botEl);
+            });
+        },
+
+        startBotMessages() {
+            setInterval(() => {
+                const randomBot = this.bots[Math.floor(Math.random() * this.bots.length)];
+                const botMessages = [
+                    'Das ist interessant!',
+                    'Ich bin einer Meinung.',
+                    'Guter Punkt!',
+                    'Danke für die Info!',
+                    'Das hilft mir sehr!',
+                    'Lass mich darüber nachdenken.',
+                    'Das ist wunderbar!',
+                    'Ich stimme dir zu.'
+                ];
+
+                const randomMsg = botMessages[Math.floor(Math.random() * botMessages.length)];
+
+                const message = {
+                    name: randomBot.name,
+                    avatar: randomBot.avatar,
+                    text: randomMsg,
+                    time: new Date().toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' })
+                };
+
+                let messages = window.App.Storage.get(`messages_${this.currentRoom}`) || [];
+                messages.push(message);
+                window.App.Storage.set(`messages_${this.currentRoom}`, messages);
+
+                this.loadMessages();
+            }, 15000);
+        }
+    },
+
+    Leaderboard: {
+        init() {
+            const fullBtn = document.getElementById('leaderboardFullBtn');
+            const fullClose = document.getElementById('leaderboardFullClose');
+
+            if (fullBtn) fullBtn.addEventListener('click', () => window.App.UI.openModal('leaderboardFullModal'));
+            if (fullClose) fullClose.addEventListener('click', () => window.App.UI.closeModal('leaderboardFullModal'));
+
+            this.render();
+        },
+
+        getTopUsers() {
+            const users = [...window.App.Auth.users].sort((a, b) => b.points - a.points);
+            return users.slice(0, 10);
+        },
+
+        getMedal(rank) {
+            const medals = ['🥇', '🥈', '🥉'];
+            return medals[rank - 1] || `#${rank}`;
+        },
+
+        render() {
+            const topUsers = this.getTopUsers();
+            const container = document.getElementById('leaderboardTop');
+
+            if (!container) return;
+            container.innerHTML = '';
+
+            topUsers.forEach((user, index) => {
+                const rank = index + 1;
+                const medal = this.getMedal(rank);
+                const item = document.createElement('div');
+                item.className = 'leaderboard-item';
+                item.innerHTML = `
+                    <div class="leaderboard-rank">
+                        <span class="rank-medal">${medal}</span>
+                    </div>
+                    <div class="leaderboard-user-info">
+                        <div class="leaderboard-avatar">${user.avatar}</div>
+                        <div class="leaderboard-name">${user.name}</div>
+                    </div>
+                    <div class="leaderboard-points">
+                        ${user.points} <span style="font-size: 0.8rem;">очков</span>
+                    </div>
+                `;
+                container.appendChild(item);
+            });
+
+            this.renderFull();
+        },
+
+        renderFull() {
+            const allUsers = [...window.App.Auth.users].sort((a, b) => b.points - a.points);
+            const fullContainer = document.getElementById('leaderboardFull');
+
+            if (!fullContainer) return;
+            fullContainer.innerHTML = '';
+
+            allUsers.forEach((user, index) => {
+                const rank = index + 1;
+                const medal = this.getMedal(rank);
+                const item = document.createElement('div');
+                item.className = 'leaderboard-item';
+                item.innerHTML = `
+                    <div class="leaderboard-rank">
+                        <span class="rank-medal">${medal}</span>
+                    </div>
+                    <div class="leaderboard-user-info">
+                        <div class="leaderboard-avatar">${user.avatar}</div>
+                        <div class="leaderboard-name">${user.name}</div>
+                    </div>
+                    <div class="leaderboard-points">
+                        ${user.points} <span style="font-size: 0.8rem;">очков</span>
+                    </div>
+                `;
+                fullContainer.appendChild(item);
+            });
+        }
+    },
+
+    init() {
+        // Wait for DOM
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => this.initAfterDOM());
+        } else {
+            this.initAfterDOM();
+        }
+    },
+
+    initAfterDOM() {
+        // Auth
+        this.Auth.init();
+        this.UI.updateNavbar();
+
+        // Modals
+        const loginBtn = document.getElementById('loginBtn');
+        const registerBtn = document.getElementById('registerBtn');
+        const loginClose = document.getElementById('loginClose');
+        const registerClose = document.getElementById('registerClose');
+        const logoutBtn = document.getElementById('logoutBtn');
+
+        if (loginBtn) loginBtn.addEventListener('click', () => window.App.UI.openModal('loginModal'));
+        if (registerBtn) registerBtn.addEventListener('click', () => window.App.UI.openModal('registerModal'));
+        if (loginClose) loginClose.addEventListener('click', () => window.App.UI.closeModal('loginModal'));
+        if (registerClose) registerClose.addEventListener('click', () => window.App.UI.closeModal('registerModal'));
+        if (logoutBtn) logoutBtn.addEventListener('click', () => {
+            this.Auth.logout();
+            this.UI.updateNavbar();
+            window.App.UI.closeModal('loginModal');
+            window.App.UI.closeModal('registerModal');
+        });
+
+        // Modal closers
+        document.querySelectorAll('.modal').forEach(modal => {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                    document.body.classList.remove('modal-open');
+                }
+            });
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.modal.active').forEach(modal => {
+                    modal.classList.remove('active');
+                    document.body.classList.remove('modal-open');
+                });
+            }
+        });
+
+        // Forms
+        const loginForm = document.getElementById('loginForm');
+        const registerForm = document.getElementById('registerForm');
+        const gameResultClose = document.getElementById('gameResultClose');
+        const gameResultBtn = document.getElementById('gameResultBtn');
+
+        if (loginForm) {
+            loginForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const email = document.getElementById('loginEmail')?.value;
+                const password = document.getElementById('loginPassword')?.value;
+                if (this.Auth.login(email, password)) {
+                    loginForm.reset();
+                    window.App.UI.closeModal('loginModal');
+                    this.UI.updateNavbar();
+                }
+            });
+        }
+
+        if (registerForm) {
+            registerForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const name = document.getElementById('registerName')?.value;
+                const email = document.getElementById('registerEmail')?.value;
+                const password = document.getElementById('registerPassword')?.value;
+                const selectedAvatar = document.querySelector('.avatar-option.selected');
+                const avatar = selectedAvatar ? selectedAvatar.textContent : this.DEFAULT_AVATARS[0];
+
+                if (this.Auth.register(name, email, password, avatar)) {
+                    registerForm.reset();
+                    document.querySelectorAll('.avatar-option').forEach(opt => opt.classList.remove('selected'));
+                    window.App.UI.closeModal('registerModal');
+                    this.UI.updateNavbar();
+                }
+            });
+        }
+
+        // Avatar selector
+        const avatarOptions = document.getElementById('avatarOptions');
+        if (avatarOptions) {
+            this.DEFAULT_AVATARS.forEach(avatar => {
+                const opt = document.createElement('div');
+                opt.className = 'avatar-option';
+                opt.textContent = avatar;
+                opt.addEventListener('click', () => {
+                    document.querySelectorAll('.avatar-option').forEach(o => o.classList.remove('selected'));
+                    opt.classList.add('selected');
+                });
+                avatarOptions.appendChild(opt);
+            });
+        }
+
+        if (gameResultClose) gameResultClose.addEventListener('click', () => window.App.UI.closeModal('gameResultModal'));
+        if (gameResultBtn) gameResultBtn.addEventListener('click', () => window.App.UI.closeModal('gameResultModal'));
+
+        // CTA scroll
+        const ctaBtn = document.getElementById('ctaBtn');
+        if (ctaBtn) {
+            ctaBtn.addEventListener('click', () => {
+                const dictionaryEl = document.getElementById('dictionary');
+                if (dictionaryEl) dictionaryEl.scrollIntoView({ behavior: 'smooth' });
+            });
+        }
+
+        // Modules
+        this.Parallax3D.init();
+        this.Dictionary.init();
+        this.Games.init();
+        this.Chat.init();
+        this.Leaderboard.init();
+    }
+};
+
+// Start app
+window.App.init();
